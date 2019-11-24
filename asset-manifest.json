@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/seleniumpractice/static/css/main.5e4e9510.chunk.css",
-    "main.js": "/seleniumpractice/static/js/main.f12c11aa.chunk.js",
-    "main.js.map": "/seleniumpractice/static/js/main.f12c11aa.chunk.js.map",
+    "main.js": "/seleniumpractice/static/js/main.104a4148.chunk.js",
+    "main.js.map": "/seleniumpractice/static/js/main.104a4148.chunk.js.map",
     "runtime-main.js": "/seleniumpractice/static/js/runtime-main.c073f75c.js",
     "runtime-main.js.map": "/seleniumpractice/static/js/runtime-main.c073f75c.js.map",
-    "static/js/2.f9f6c158.chunk.js": "/seleniumpractice/static/js/2.f9f6c158.chunk.js",
-    "static/js/2.f9f6c158.chunk.js.map": "/seleniumpractice/static/js/2.f9f6c158.chunk.js.map",
+    "static/js/2.e1d2afc6.chunk.js": "/seleniumpractice/static/js/2.e1d2afc6.chunk.js",
+    "static/js/2.e1d2afc6.chunk.js.map": "/seleniumpractice/static/js/2.e1d2afc6.chunk.js.map",
     "index.html": "/seleniumpractice/index.html",
-    "precache-manifest.02306f00a181c3c31b4233abefddbe21.js": "/seleniumpractice/precache-manifest.02306f00a181c3c31b4233abefddbe21.js",
+    "precache-manifest.6e8bb88e4f2c89607175b6032d44a965.js": "/seleniumpractice/precache-manifest.6e8bb88e4f2c89607175b6032d44a965.js",
     "service-worker.js": "/seleniumpractice/service-worker.js",
     "static/css/main.5e4e9510.chunk.css.map": "/seleniumpractice/static/css/main.5e4e9510.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.c073f75c.js",
-    "static/js/2.f9f6c158.chunk.js",
+    "static/js/2.e1d2afc6.chunk.js",
     "static/css/main.5e4e9510.chunk.css",
-    "static/js/main.f12c11aa.chunk.js"
+    "static/js/main.104a4148.chunk.js"
   ]
 }
