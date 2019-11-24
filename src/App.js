@@ -10,7 +10,10 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Button
+  Button,
+  ButtonGroup,
+  TextField,
+  TextareaAutosize
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -36,8 +39,20 @@ const useStyles = makeStyles(theme => ({
   },
   appBarStyle: {
     backgroundColor: "Orchid"
+  },
+  btnStyle: {
+    backgroundColor: "Orchid",
+    color: "White"
   }
 }));
+
+const labelInputProps = {
+  step: 300,
+  fullWidth: true,
+  disabled: true,
+  margin: "normal",
+  variant: "standard"
+};
 
 function App() {
   const classes = useStyles();
@@ -63,20 +78,34 @@ function App() {
       <br />
       <Grid container className={classes.root} spacing={2} justify="center">
         <Grid item xs={3} className={classes.gridStyle}>
+          <TextField label="ADD TODO" inputProps={labelInputProps} />
           <Paper>
-            <ListSubheader>TODO</ListSubheader>
+            <Typography>
+              <TextField
+                required
+                id="header"
+                label="What Do You Need to Do"
+                margin="normal"
+              />
+            </Typography>
+            <Typography>
+              <TextareaAutosize placeholder="Describe Your TODOs" rows={5} />
+            </Typography>
+            <ButtonGroup size="medium" aria-label="Add or cancel button">
+              <Button className={classes.btnStyle}>Add</Button>
+              <Button className={classes.btnStyle}>Clear</Button>
+            </ButtonGroup>
+          </Paper>
+        </Grid>
+        <Grid item xs={3} className={classes.gridStyle}>
+          <TextField label="TODO LIST" inputProps={labelInputProps} />
+          <Paper>
             <TodoListComponent />
           </Paper>
         </Grid>
         <Grid item xs={3} className={classes.gridStyle}>
+          <TextField label="IN-PROGRESS" inputProps={labelInputProps} />
           <Paper>
-            <ListSubheader>IN-PROGRESS</ListSubheader>
-            <TodoListComponent />
-          </Paper>
-        </Grid>
-        <Grid item xs={3} className={classes.gridStyle}>
-          <Paper>
-            <ListSubheader>DONE</ListSubheader>
             <TodoListComponent />
           </Paper>
         </Grid>
