@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/saifurtech/seleniumpractice/static/css/main.b100e6da.chunk.css",
+    "main.js": "/saifurtech/seleniumpractice/static/js/main.ae3f3bbf.chunk.js",
+    "main.js.map": "/saifurtech/seleniumpractice/static/js/main.ae3f3bbf.chunk.js.map",
+    "runtime-main.js": "/saifurtech/seleniumpractice/static/js/runtime-main.f6eaaf4d.js",
+    "runtime-main.js.map": "/saifurtech/seleniumpractice/static/js/runtime-main.f6eaaf4d.js.map",
+    "static/js/2.97c52231.chunk.js": "/saifurtech/seleniumpractice/static/js/2.97c52231.chunk.js",
+    "static/js/2.97c52231.chunk.js.map": "/saifurtech/seleniumpractice/static/js/2.97c52231.chunk.js.map",
+    "index.html": "/saifurtech/seleniumpractice/index.html",
+    "precache-manifest.ce7efe73922320f8613cdb75d504ad22.js": "/saifurtech/seleniumpractice/precache-manifest.ce7efe73922320f8613cdb75d504ad22.js",
+    "service-worker.js": "/saifurtech/seleniumpractice/service-worker.js",
+    "static/css/main.b100e6da.chunk.css.map": "/saifurtech/seleniumpractice/static/css/main.b100e6da.chunk.css.map",
+    "static/media/logo.svg": "/saifurtech/seleniumpractice/static/media/logo.25bf045c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f6eaaf4d.js",
+    "static/js/2.97c52231.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.ae3f3bbf.chunk.js"
+  ]
+}
