@@ -1,0 +1,32 @@
+{
+        "todo": [
+                {
+                        "header": "Read more about Selenium on StackOverflow",
+                        "body": "Learn Selenium Java"
+                },
+                {
+                        "header": "Read more about Selenium on SaifurTech",
+                        "body": "Learn Selenium Java on SaifurTech"
+                }
+        ],
+        "inProgress": [
+                {
+                        "header": "Install JDK 1.8",
+                        "body": "Install JDK 1.8"
+                },
+                {
+                        "header": "Test",
+                        "body": "Test Body"
+                }
+        ],
+        "done": [
+                {
+                        "header": "Set up internet",
+                        "body": "Set up internet"
+                },
+                {
+                        "header": "Set up office room",
+                        "body": "Set up office room"
+                }
+        ]
+}

@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import TodoListComponent from "./component/TodoListComponent";
 import {
   Grid,
   makeStyles,
   Paper,
-  ListSubheader,
   AppBar,
   Toolbar,
   IconButton,
@@ -16,6 +15,7 @@ import {
   TextareaAutosize
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import InProgressListComponent from "./component/InProgressListComponent";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,27 +35,31 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   gridStyle: {
-    backgroundColor: "Lavender"
+    backgroundColor: "#eef3f7"
   },
   appBarStyle: {
-    backgroundColor: "Orchid"
+    backgroundColor: "LightSteelBlue"
   },
   btnStyle: {
-    backgroundColor: "Orchid",
+    backgroundColor: "LightSteelBlue",
     color: "White"
   }
 }));
 
 const labelInputProps = {
   step: 300,
-  fullWidth: true,
   disabled: true,
   margin: "normal",
   variant: "standard"
 };
 
 function App() {
+  let data = require("./sampleTodo.json");
   const classes = useStyles();
+  let header = "";
+  let body = "";
+  const [todo, setTodo] = useState(data.todo);
+  const [inProgress, setInProgress] = useState(data.inProgress);
 
   return (
     <>
@@ -80,19 +84,34 @@ function App() {
         <Grid item xs={3} className={classes.gridStyle}>
           <TextField label="ADD TODO" inputProps={labelInputProps} />
           <Paper>
-            <Typography>
+            <Typography component={"div"}>
               <TextField
                 required
                 id="header"
                 label="What Do You Need to Do"
                 margin="normal"
+                onInput={e => (header = e.target.value)}
               />
             </Typography>
             <Typography>
-              <TextareaAutosize placeholder="Describe Your TODOs" rows={5} />
+              <TextareaAutosize
+                placeholder="Describe Your TODO"
+                rows={5}
+                onInput={e => (body = e.target.value)}
+              />
             </Typography>
             <ButtonGroup size="medium" aria-label="Add or cancel button">
-              <Button className={classes.btnStyle}>Add</Button>
+              <Button
+                className={classes.btnStyle}
+                onClick={() => {
+                  setTodo({
+                    header: header,
+                    body: body
+                  });
+                }}
+              >
+                Add
+              </Button>
               <Button className={classes.btnStyle}>Clear</Button>
             </ButtonGroup>
           </Paper>
@@ -100,13 +119,21 @@ function App() {
         <Grid item xs={3} className={classes.gridStyle}>
           <TextField label="TODO LIST" inputProps={labelInputProps} />
           <Paper>
-            <TodoListComponent />
+            <TodoListComponent
+              handleToDoList={() => setTodo(todo.concat(data.todo))}
+              todos={todo}
+            />
           </Paper>
         </Grid>
         <Grid item xs={3} className={classes.gridStyle}>
           <TextField label="IN-PROGRESS" inputProps={labelInputProps} />
           <Paper>
-            <TodoListComponent />
+            <InProgressListComponent
+              handleInProgressList={() =>
+                setInProgress(inProgress.concat(data.inProgress))
+              }
+              inProgress={inProgress}
+            />
           </Paper>
         </Grid>
       </Grid>

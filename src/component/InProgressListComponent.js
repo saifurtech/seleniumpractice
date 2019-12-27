@@ -54,13 +54,13 @@ const DialogTitle = withStyles(styles)(props => {
   );
 });
 
-class TodoListComponent extends React.Component {
+class InProgressListComponent extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       dialogueOpen: false,
-      todos: []
+      inProgress: []
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -71,7 +71,7 @@ class TodoListComponent extends React.Component {
     this.setState({
       dialogueOpen: true,
       header: e.target.innerText,
-      body: this.props.todos.find(
+      body: this.props.inProgress.find(
         x => x.header.trim() === e.target.innerText.trim()
       ).body
     });
@@ -94,7 +94,7 @@ class TodoListComponent extends React.Component {
     return (
       <>
         <List className={classes.root}>
-          {this.props.todos.map(value => {
+          {this.props.inProgress.map(value => {
             const labelId = `checkbox-list-label-${value.header}`;
 
             return (
@@ -131,4 +131,4 @@ class TodoListComponent extends React.Component {
     );
   }
 }
-export default withStyles(useStyles)(TodoListComponent);
+export default withStyles(useStyles)(InProgressListComponent);
