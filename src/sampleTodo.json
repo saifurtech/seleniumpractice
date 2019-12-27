@@ -1,32 +1,32 @@
 {
         "todo": [
                 {
-                        "header": "Read more about Selenium on StackOverflow",
-                        "body": "Learn Selenium Java"
+                        "header": "NoSuchElement Exception",
+                        "body": "Read About NoSuchElementException on StackOverflow"
                 },
                 {
-                        "header": "Read more about Selenium on SaifurTech",
-                        "body": "Learn Selenium Java on SaifurTech"
+                        "header": "More About Git",
+                        "body": "Take Interactive Git Course to Brush up Git Skills"
                 }
         ],
         "inProgress": [
                 {
-                        "header": "Install JDK 1.8",
-                        "body": "Install JDK 1.8"
+                        "header": "Learning Selenium",
+                        "body": "Taking Super Awesome Selenium Course from SaifurTech.com"
                 },
                 {
-                        "header": "Test",
-                        "body": "Test Body"
+                        "header": "Reading Selenium W3C",
+                        "body": "Reading Selenium Documentation on W3C.com"
                 }
         ],
         "done": [
                 {
-                        "header": "Set up internet",
-                        "body": "Set up internet"
+                        "header": "Set up Internet",
+                        "body": "Get Internet with Good Speed"
                 },
                 {
-                        "header": "Set up office room",
-                        "body": "Set up office room"
+                        "header": "Set up Office Room",
+                        "body": "Set up a Quite Office Room with Additional Privacy for Learning"
                 }
         ]
 }

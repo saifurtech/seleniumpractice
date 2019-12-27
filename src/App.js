@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import InProgressListComponent from "./component/InProgressListComponent";
+import DoneComponent from "./component/DoneComponent";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,6 +61,7 @@ function App() {
   let body = "";
   const [todo, setTodo] = useState(data.todo);
   const [inProgress, setInProgress] = useState(data.inProgress);
+  const [done, setDone] = useState(data.done);
 
   return (
     <>
@@ -70,9 +72,7 @@ function App() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          />
           <Typography variant="h6" className={classes.title}>
             My TODO List
           </Typography>
@@ -81,7 +81,7 @@ function App() {
       </AppBar>
       <br />
       <Grid container className={classes.root} spacing={2} justify="center">
-        <Grid item xs={3} className={classes.gridStyle}>
+        <Grid item xs={2} className={classes.gridStyle}>
           <TextField label="ADD TODO" inputProps={labelInputProps} />
           <Paper>
             <Typography component={"div"}>
@@ -104,28 +104,24 @@ function App() {
               <Button
                 className={classes.btnStyle}
                 onClick={() => {
-                  setTodo({
-                    header: header,
-                    body: body
-                  });
+                  setTodo(data.todo.concat({ header: header, body: body }));
                 }}
               >
                 Add
               </Button>
-              <Button className={classes.btnStyle}>Clear</Button>
+              <Button className={classes.btnStyle} onClick={() => {}}>
+                Clear
+              </Button>
             </ButtonGroup>
           </Paper>
         </Grid>
-        <Grid item xs={3} className={classes.gridStyle}>
+        <Grid item xs={2} className={classes.gridStyle}>
           <TextField label="TODO LIST" inputProps={labelInputProps} />
           <Paper>
-            <TodoListComponent
-              handleToDoList={() => setTodo(todo.concat(data.todo))}
-              todos={todo}
-            />
+            <TodoListComponent handleToDoList={() => todo} todos={todo} />
           </Paper>
         </Grid>
-        <Grid item xs={3} className={classes.gridStyle}>
+        <Grid item xs={2} className={classes.gridStyle}>
           <TextField label="IN-PROGRESS" inputProps={labelInputProps} />
           <Paper>
             <InProgressListComponent
@@ -133,6 +129,15 @@ function App() {
                 setInProgress(inProgress.concat(data.inProgress))
               }
               inProgress={inProgress}
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={2} className={classes.gridStyle}>
+          <TextField label="DONE" inputProps={labelInputProps} />
+          <Paper>
+            <DoneComponent
+              handleInProgressList={() => setInProgress(done.concat(data.done))}
+              done={done}
             />
           </Paper>
         </Grid>

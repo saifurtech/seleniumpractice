@@ -5,16 +5,15 @@ import {
   ListItemIcon,
   Checkbox,
   ListItemText,
-  ListItemSecondaryAction,
   IconButton,
   Dialog,
   DialogContent,
   Typography
 } from "@material-ui/core";
-import CommentIcon from "@material-ui/icons/Comment";
 import CloseIcon from "@material-ui/icons/Close";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import { withStyles } from "@material-ui/core/styles";
+import { Droppable } from "react-drag-and-drop";
 
 const useStyles = theme => ({
   root: {
@@ -86,6 +85,11 @@ class InProgressListComponent extends React.Component {
     this.props.handleToDoList(todo);
   };
 
+  onDrop(data) {
+    console.log(data);
+    this.props.inProgress.concat(data);
+  }
+
   render() {
     const { classes } = this.props;
     if (classes === undefined) {
@@ -98,22 +102,23 @@ class InProgressListComponent extends React.Component {
             const labelId = `checkbox-list-label-${value.header}`;
 
             return (
-              <ListItem key={value} role={undefined} dense button>
-                <ListItemIcon>
-                  <Checkbox
-                    edge="start"
-                    /**checked={checked.indexOf(value) !== -1}**/
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ "aria-labelledby": labelId }}
+              <Droppable types={["todo"]} onDrop={this.onDrop.bind(this)}>
+                <ListItem key={value} role={undefined} dense button>
+                  <ListItemIcon>
+                    <Checkbox
+                      edge="start"
+                      tabIndex={-1}
+                      disabled
+                      inputProps={{ "aria-labelledby": labelId }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    id={labelId}
+                    primary={value.header}
+                    onClick={this.handleOpen}
                   />
-                </ListItemIcon>
-                <ListItemText
-                  id={labelId}
-                  primary={value.header}
-                  onClick={this.handleOpen}
-                />
-              </ListItem>
+                </ListItem>
+              </Droppable>
             );
           })}
         </List>

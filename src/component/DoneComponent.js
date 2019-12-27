@@ -13,7 +13,8 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import { withStyles } from "@material-ui/core/styles";
-import { Draggable, Droppable } from "react-drag-and-drop";
+import { Droppable } from "react-drag-and-drop";
+
 const useStyles = theme => ({
   root: {
     width: "100%",
@@ -52,13 +53,13 @@ const DialogTitle = withStyles(styles)(props => {
   );
 });
 
-class TodoListComponent extends React.Component {
+class DoneComponent extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       dialogueOpen: false,
-      todos: []
+      done: []
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -69,20 +70,25 @@ class TodoListComponent extends React.Component {
     this.setState({
       dialogueOpen: true,
       header: e.target.innerText,
-      body: this.props.todos.find(
+      body: this.props.done.find(
         x => x.header.trim() === e.target.innerText.trim()
       ).body
     });
   };
 
-  handleClose = () =>
+  handleClose = e =>
     this.setState({
       dialogueOpen: false
     });
 
   handleToDoList = todo => {
-    this.props.todos.concat(todo);
+    this.props.handleToDoList(todo);
   };
+
+  onDrop(data) {
+    console.log(data);
+    this.props.inProgress.concat(data);
+  }
 
   render() {
     const { classes } = this.props;
@@ -92,11 +98,11 @@ class TodoListComponent extends React.Component {
     return (
       <>
         <List className={classes.root}>
-          {this.props.todos.map(value => {
+          {this.props.done.map(value => {
             const labelId = `checkbox-list-label-${value.header}`;
 
             return (
-              <Draggable type="todo">
+              <Droppable types={["todo"]} onDrop={this.onDrop.bind(this)}>
                 <ListItem key={value} role={undefined} dense button>
                   <ListItemIcon>
                     <Checkbox
@@ -112,7 +118,7 @@ class TodoListComponent extends React.Component {
                     onClick={this.handleOpen}
                   />
                 </ListItem>
-              </Draggable>
+              </Droppable>
             );
           })}
         </List>
@@ -130,4 +136,4 @@ class TodoListComponent extends React.Component {
     );
   }
 }
-export default withStyles(useStyles)(TodoListComponent);
+export default withStyles(useStyles)(DoneComponent);
