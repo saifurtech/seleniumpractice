@@ -13,7 +13,6 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import { withStyles } from "@material-ui/core/styles";
-import { Draggable, Droppable } from "react-drag-and-drop";
 const useStyles = theme => ({
   root: {
     width: "100%",
@@ -96,23 +95,21 @@ class TodoListComponent extends React.Component {
             const labelId = `checkbox-list-label-${value.header}`;
 
             return (
-              <Draggable type="todo">
-                <ListItem key={value} role={undefined} dense button>
-                  <ListItemIcon>
-                    <Checkbox
-                      edge="start"
-                      tabIndex={-1}
-                      disabled
-                      inputProps={{ "aria-labelledby": labelId }}
-                    />
-                  </ListItemIcon>
-                  <ListItemText
-                    id={labelId}
-                    primary={value.header}
-                    onClick={this.handleOpen}
+              <ListItem key={value} role={undefined} dense button>
+                <ListItemIcon>
+                  <Checkbox
+                    edge="start"
+                    tabIndex={-1}
+                    disabled
+                    inputProps={{ "aria-labelledby": labelId }}
                   />
-                </ListItem>
-              </Draggable>
+                </ListItemIcon>
+                <ListItemText
+                  id={labelId}
+                  primary={value.header}
+                  onClick={this.handleOpen}
+                />
+              </ListItem>
             );
           })}
         </List>

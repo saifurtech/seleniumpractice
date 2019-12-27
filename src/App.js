@@ -14,7 +14,6 @@ import {
   TextField,
   TextareaAutosize
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 import InProgressListComponent from "./component/InProgressListComponent";
 import DoneComponent from "./component/DoneComponent";
 
@@ -61,7 +60,7 @@ function App() {
   let body = "";
   const [todo, setTodo] = useState(data.todo);
   const [inProgress, setInProgress] = useState(data.inProgress);
-  const [done, setDone] = useState(data.done);
+  const [done] = useState(data.done);
 
   return (
     <>
