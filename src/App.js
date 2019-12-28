@@ -16,6 +16,8 @@ import {
 } from "@material-ui/core";
 import InProgressListComponent from "./component/InProgressListComponent";
 import DoneComponent from "./component/DoneComponent";
+import Backend from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,10 +62,10 @@ function App() {
   let body = "";
   const [todo, setTodo] = useState(data.todo);
   const [inProgress, setInProgress] = useState(data.inProgress);
-  const [done] = useState(data.done);
+  const [done, setDone] = useState(data.done);
 
   return (
-    <>
+    <DndProvider backend={Backend}>
       <AppBar position="static" className={classes.appBarStyle}>
         <Toolbar>
           <IconButton
@@ -103,7 +105,10 @@ function App() {
               <Button
                 className={classes.btnStyle}
                 onClick={() => {
-                  setTodo(data.todo.concat({ header: header, body: body }));
+                  if (header === "" || body === "") {
+                    return;
+                  }
+                  setTodo(todo.concat({ header: header, body: body }));
                 }}
               >
                 Add
@@ -117,7 +122,15 @@ function App() {
         <Grid item xs={2} className={classes.gridStyle}>
           <TextField label="TODO LIST" inputProps={labelInputProps} />
           <Paper>
-            <TodoListComponent handleToDoList={() => todo} todos={todo} />
+            <TodoListComponent
+              handleToDoList={() => todo}
+              todos={todo}
+              handleInProgress={header => {
+                let ele = todo.find(x => x.header === header);
+                setTodo(todo.filter(x => x.header !== ele.header));
+                setInProgress(inProgress.concat(ele));
+              }}
+            />
           </Paper>
         </Grid>
         <Grid item xs={2} className={classes.gridStyle}>
@@ -128,6 +141,11 @@ function App() {
                 setInProgress(inProgress.concat(data.inProgress))
               }
               inProgress={inProgress}
+              handleDone={header => {
+                let ele = inProgress.find(x => x.header === header);
+                setInProgress(inProgress.filter(x => x.header !== ele.header));
+                setDone(done.concat(ele));
+              }}
             />
           </Paper>
         </Grid>
@@ -135,13 +153,13 @@ function App() {
           <TextField label="DONE" inputProps={labelInputProps} />
           <Paper>
             <DoneComponent
-              handleInProgressList={() => setInProgress(done.concat(data.done))}
+              handleInProgressList={() => setDone(done.concat(data.done))}
               done={done}
             />
           </Paper>
         </Grid>
       </Grid>
-    </>
+    </DndProvider>
   );
 }
 

@@ -98,20 +98,17 @@ class DoneComponent extends React.Component {
       <>
         <List className={classes.root}>
           {this.props.done.map(value => {
-            const labelId = `checkbox-list-label-${value.header}`;
-
             return (
               <ListItem key={value} role={undefined} dense button>
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
                     tabIndex={-1}
-                    disabled
-                    inputProps={{ "aria-labelledby": labelId }}
+                    inputProps={{ "aria-labelledby": value.header }}
                   />
                 </ListItemIcon>
                 <ListItemText
-                  id={labelId}
+                  id={value.header}
                   primary={value.header}
                   onClick={this.handleOpen}
                 />

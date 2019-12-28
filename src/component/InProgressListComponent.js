@@ -84,6 +84,10 @@ class InProgressListComponent extends React.Component {
     this.props.handleToDoList(todo);
   };
 
+  handleDone = ev => {
+    this.props.handleDone(ev.target.getAttribute("aria-labelledby"));
+  };
+
   render() {
     const { classes } = this.props;
     if (classes === undefined) {
@@ -93,20 +97,18 @@ class InProgressListComponent extends React.Component {
       <>
         <List className={classes.root}>
           {this.props.inProgress.map(value => {
-            const labelId = `checkbox-list-label-${value.header}`;
-
             return (
               <ListItem key={value} role={undefined} dense button>
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
                     tabIndex={-1}
-                    disabled
-                    inputProps={{ "aria-labelledby": labelId }}
+                    inputProps={{ "aria-labelledby": value.header }}
+                    onClick={this.handleDone.bind(this)}
                   />
                 </ListItemIcon>
                 <ListItemText
-                  id={labelId}
+                  id={value.header}
                   primary={value.header}
                   onClick={this.handleOpen}
                 />

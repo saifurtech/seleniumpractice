@@ -13,6 +13,7 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import { withStyles } from "@material-ui/core/styles";
+
 const useStyles = theme => ({
   root: {
     width: "100%",
@@ -83,8 +84,13 @@ class TodoListComponent extends React.Component {
     this.props.todos.concat(todo);
   };
 
+  handleInProgress = ev => {
+    this.props.handleInProgress(ev.target.getAttribute("aria-labelledby"));
+  };
+
   render() {
     const { classes } = this.props;
+
     if (classes === undefined) {
       return;
     }
@@ -92,20 +98,18 @@ class TodoListComponent extends React.Component {
       <>
         <List className={classes.root}>
           {this.props.todos.map(value => {
-            const labelId = `checkbox-list-label-${value.header}`;
-
             return (
               <ListItem key={value} role={undefined} dense button>
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
                     tabIndex={-1}
-                    disabled
-                    inputProps={{ "aria-labelledby": labelId }}
+                    inputProps={{ "aria-labelledby": value.header }}
+                    onClick={this.handleInProgress.bind(this)}
                   />
                 </ListItemIcon>
                 <ListItemText
-                  id={labelId}
+                  id={value.header}
                   primary={value.header}
                   onClick={this.handleOpen}
                 />
