@@ -84,11 +84,6 @@ class DoneComponent extends React.Component {
     this.props.handleToDoList(todo);
   };
 
-  onDrop(data) {
-    console.log(data);
-    this.props.inProgress.concat(data);
-  }
-
   render() {
     const { classes } = this.props;
     if (classes === undefined) {

@@ -66,13 +66,19 @@ class TodoListComponent extends React.Component {
   }
 
   handleOpen = e => {
-    this.setState({
-      dialogueOpen: true,
-      header: e.target.innerText,
-      body: this.props.todos.find(
-        x => x.header.trim() === e.target.innerText.trim()
-      ).body
-    });
+    let dialogueOpen = true;
+    let header = e.target.innerText;
+    let body = this.props.todos.find(
+      x => x.header.trim() === e.target.innerText.trim()
+    ).body;
+
+    setTimeout(() => {
+      this.setState({
+        dialogueOpen: dialogueOpen,
+        header: header,
+        body: body
+      });
+    }, 1500);
   };
 
   handleClose = () =>
