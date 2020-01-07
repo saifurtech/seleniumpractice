@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de72adcd8b5684a49505caf0e93fb4fb",
+    "revision": "90ddd1bce18d47d6bc4ab834c5d34415",
     "url": "/seleniumpractice/index.html"
   },
   {
-    "revision": "4343ef1bf0a5bd3588f8",
+    "revision": "f35641ff71ebd560eb2d",
     "url": "/seleniumpractice/static/css/main.5e4e9510.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/seleniumpractice/static/js/2.36db5fa4.chunk.js.LICENSE"
   },
   {
-    "revision": "4343ef1bf0a5bd3588f8",
-    "url": "/seleniumpractice/static/js/main.3680b5b9.chunk.js"
+    "revision": "f35641ff71ebd560eb2d",
+    "url": "/seleniumpractice/static/js/main.da7a2e1d.chunk.js"
   },
   {
     "revision": "9c8709fbfc18bad03c75",
